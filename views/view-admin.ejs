@@ -1,0 +1,55 @@
+<%- include('./header.ejs') %>
+
+
+        <!-- Content wrapper -->
+        <div class="content-wrapper mt-5">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y mt-5">
+           
+                <div class="card-body p-0 mt-5">
+                <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Profile Picture</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Password</th>
+                          <th>Gender</th>
+                          <th>Hobby</th>
+                          <th>Description</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% var i = 1;  for(var record of adminData) { %>
+                          <tr>
+                            <td><%= i %></td>
+                            <td>
+                              <img src="<%= record.avtar %>" width="40"/>
+                            </td>
+                            <td><%= record.name %></td>
+                            <td><%= record.email %></td>
+                            <td><%= record.password %></td>
+                            <td><%= record.gender %></td>
+                            <td><%= record.hobby %></td>
+                            <td>
+                              <%= record.desc %>
+                            </td>
+                            <td>
+                              <a class="text-danger" href="/deleteAdmin/<%= record._id %>"
+                                onclick="return confirm('Are you Sure to delete this Record ?')">❌</a>
+                              <a class="text-danger" href="/updateAdmin/?adminId=<%= record._id %>">✏️</a>
+                            </td>
+                            </tr>
+                            <% i++; } %>
+                              </tbody>
+                    </table>
+              </div>
+            
+          </div>
+          <!-- / Content -->
+
+         
+
+  <%- include('./footer.ejs') %>
